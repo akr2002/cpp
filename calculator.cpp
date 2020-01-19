@@ -1,0 +1,1 @@
+// Program to create the equivalent of a four-function calculator. The program requires the user to enter two numbers and an operator. It then carries out the specified arithmetical operation: addition, subtraction, multiplication or division of the two numbers
