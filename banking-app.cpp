@@ -18,7 +18,7 @@ class Account
 		unsigned float balance;
 		unsigned float ROI;		// Rate Of Interest (anything per annum divided by 100, so in any sane condition it should not be greater than 1
 		unsigned float time;		// float, in years
-		static std::fstream file("records.dat", std::ios::in | std::ios::out | std::ios::bin | std::ios::noreplace);
+		static std::fstream file("records.dat", std::ios::in | std::ios::out | std::ios::binary | std::ios::noreplace);
 		Account temp;
 	public:
 		Account();
@@ -135,7 +135,7 @@ bool Account::withdraw()
 			std::cout << "Withdraw amount cannit be greater than account balance.\n";
 	}
 	temp.balance -= withdrawBal;
-	file.seekp(cur - (sizeof(temp)), cur);
+	file.seekp(cur - (sizeof(temp)), std::ios::cur);
 	file.write((char *)&temp, sizeof(temp));
 	std::cout << "\nAccount details updated successfully\n";
 	return true;
@@ -153,7 +153,7 @@ bool Account::deposit()
 	std::cout << "Enter deposit amount: ";
 	std::cin >> depAmt;
 	temp.balance += depAmt;
-	file.seekp(cur - (sizeof(temp)), cur);
+	file.seekp(cur - (sizeof(temp)), std::ios::cur);
 	file.write((char *)&temp, sizeof(temp));
 	std::cout << "\nAccount details updated successfully\n";
 	return true;
