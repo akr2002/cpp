@@ -35,3 +35,6 @@
 *.cpp~
 *.h~
 *.un~
+
+# bin directory
+bin*
