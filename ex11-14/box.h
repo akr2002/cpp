@@ -20,4 +20,21 @@ class Box
 		{
 			return length * width * height;
 		}
-}
+
+		int compare(const Box& box) const
+		{
+			if (volume() < box.volume()) return -1;
+			if (volume() == box.volume()) return 0;
+			return +1;
+		}
+
+		void listBox() const
+		{
+			std::cout << " Box(" << std::setw(2) << length << ", "
+				<< std::setw(2) << width << ", "
+				<< std::setw(2) << height << ")";
+		}
+};
+#endif
+
+
