@@ -41,3 +41,6 @@ bin*
 
 # build directory
 build*
+
+# .vscode
+.vscode
