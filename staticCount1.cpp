@@ -26,7 +26,7 @@ void Count::display()
 
 void Count::displayStatic()
 {
-	std::cout << "c = " << c << std::endl;
+	std::cout << "count = " << c << std::endl;
 }
 
 int main()
