@@ -5,17 +5,27 @@ class Complex
 	private:
 		int real {};
 		int imag {};
+
 	public:
-		Complex(int r, int i) : real {r}, imag {i}
+		Complex(const int& r, const int& i) : real {r}, imag {i}
 		{}
 
 		Complex() = default;
 
-		inline Complex& operator -- ()
+		// Pre decrement
+		inline Complex& operator --()
 		{
 			--real;
 			--imag;
 			return *this;
+		}
+
+		// Post decrement
+		inline const Complex operator --(int)
+		{
+			auto copy{*this};
+			--(*this);
+			return copy;
 		}
 
 		friend std::ostream& operator<<(std::ostream& out, const Complex& c1);
@@ -29,10 +39,22 @@ std::ostream& operator<<(std::ostream& out, const Complex& c1)
 	return out;
 }
 
-int main()
+int main(int argc, char **argv)
 {
-	Complex c1 {3,5};
-	std::cout << "c1 = " << c1 << "\n--c1 = " << --c1 << std::endl;
+	if (argc != 3)
+	{
+		std::cerr << "Usage: complexDecrement [real part] [imaginary part]"
+			<< "\nNote: The arguments must be of integer type." << std::endl;
+
+		return -1;
+	}
+
+	Complex c1 {std::stoi(argv[1]), std::stoi(argv[2])};
+
+	std::cout << "c1 = " << c1 
+		<< "\nPre decrement: --c1 = " << --c1 
+		<< "\nPost decrement: c1-- = " << c1--
+		<< "\nc1 is now: " << c1 << std::endl;
 
 	return 0;
 }
