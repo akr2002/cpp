@@ -16,7 +16,7 @@ class Complex
 		{
 			if ((c1.real + c1.imag) > (this->real + this->imag))
 			{
-				throw std::runtime_error("Sum of real and imaginary parts of second complex number is greater than that of the first complex number");
+				throw std::runtime_error("Sum of real and imaginary parts of second complex number is greater than that of the first");
 			}
 
 			Complex temp;
@@ -31,7 +31,7 @@ class Complex
 
 std::ostream& operator << (std::ostream& out, const Complex& c1)
 {
-	out << c1.real << (c1.imag < 0 ? " - " : " + ") << c1.imag << "i";
+	out << c1.real << " + " << c1.imag << "i";
 
 	return out;
 }
