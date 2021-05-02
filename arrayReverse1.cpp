@@ -25,6 +25,7 @@ int main()
 
 	std::cout << "Array in reverse order: ";
 	for (std::size_t i {}; i < size; std::cout << arr[i++] << " ");
+	std::cout << std::endl;
 
 	return 0;
 }
