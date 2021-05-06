@@ -6,21 +6,21 @@ bool attacked(int i, int j, const auto& board, int N)
 	// checking for column j
 	for (int k {1}; k <= i - 1; ++k)
 	{
-		if (board[k][j] == 1)
+		if (board.at(k).at(j) == 1)
 			return false;
 	}
 
 	// checking upper right diagonal
 	for (int k {i - 1}, l {j + 1}; k >= 1 && l <= N; ++k, ++l)
 	{
-		if (board[k][l] == 1)
+		if (board.at(k).at(l) == 1)
 			return false;
 	}
 	
 	// checking for upper left diagonal
 	for (int k {i - 1}, l {j - 1}; k >= 1 && l >= 1; --k, --l)
 	{
-		if (board[k][l] == 1)
+		if (board.at(k).at(l) == 1)
 			return false;
 	}
 
@@ -36,12 +36,12 @@ bool nqueen(int row, int n, int N, auto& board)
 	{
 		if (attacked(row, j, board, N))
 		{
-			board[row][j] = 1;
+			board.at(row).at(j) = 1;
 
 			if (nqueen(row+1, n - 1, N, board))
 				return false;
 
-			board[row][j] = 0;	// backtracking
+			board.at(row).at(j) = 0;	// backtracking
 		}
 	}
 
@@ -73,7 +73,7 @@ int main(int argc, char** argv)
 		board[i] = new int[n];
 	}*/
 
-	auto board { std::vector<std::vector<int>>(n, std::vector<int>(n, 0)) };
+	auto board { std::vector<std::vector<int>>(n+1, std::vector<int>(n+1, 0)) };
 
 	if(nqueen(1, n, n, board))
 	{
